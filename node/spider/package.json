@@ -1,0 +1,16 @@
+{
+  "name": "spider",
+  "version": "1.0.0",
+  "description": "school task",
+  "main": "spider.js",
+  "scripts": {
+    "test": "node spider.js"
+  },
+  "author": "Mr.smile",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.1",
+    "cheerio": "^0.22.0",
+    "iconv-lite": "^0.4.13"
+  }
+}

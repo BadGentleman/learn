@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<title>Document</title>
+	<style>
+		body{
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../js/lib/jquery.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery.fullpage.js"></script>
+
+	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+	<link rel="stylesheet" href="../css/H5ComponentBase.css">
+
+
+	<script type="text/javascript" src="../js/H5.js"></script>
+	<link rel="stylesheet" href="../css/H5.css">
+</head>
+<body>
+	<div id="iphone"></div>
+	<script type="text/javascript">
+
+		var cfg = {
+
+			type: 'base',
+
+			width: 500,
+			height: 300,
+			
+			bg: 'url(../imgs/people.png)',
+
+			//text: 'the fucking world!!!',
+
+			css: {
+				textAlign: 'center',
+				bottom: 0,
+				opacity: 0
+			},
+			animateIn: {
+				bottom: 100,
+				opacity: 1
+			},
+			animateOut: {
+				bottom: 0,
+				opacity: 0
+			}
+
+		};
+
+		var h5 = new H5($('#iphone'));
+		h5.addPage()
+				.addComponent('com-1', {
+					type: 'base',
+
+					width: 500,
+					height: 300,
+					
+					bg: 'url(../imgs/people.png)',
+
+					//text: 'the fucking world!!!',
+
+					css: {
+						textAlign: 'center',
+						bottom: 0,
+						opacity: 0
+					},
+					animateIn: {
+						bottom: 100,
+						opacity: 1
+					},
+					animateOut: {
+						bottom: 0,
+						opacity: 0
+					},
+					center: true
+				})
+				.addComponent('com-2', {
+					type: 'base',
+
+					width: 500,
+					height: 200,
+
+					text: '我在第一页',
+
+					css: {
+						background: '#ccc'
+					},
+					center: true
+				})
+		  .addPage()
+			  	.addComponent('com-3', {
+					type: 'base',
+
+					width: 500,
+					height: 200,
+
+					text: '我在第二页',
+
+					css: {
+						background: '#ccc'
+					},
+					center: true
+				})
+		  .addPage()
+			  	.addComponent('com-4', {
+					type: 'base',
+
+					width: 500,
+					height: 100,
+
+					text: '我在第三页',
+
+					css: {
+						background: '#ccc'
+					},
+					center: true
+				})
+				.addComponent('com-5', {
+					type: 'base',
+
+					width: 500,
+					height: 100,
+
+					text: '我在第三页',
+
+					css: {
+						background: '#ccc',
+						top: 50
+					},
+					center: true
+				})
+				.addComponent('com-6', {
+					type: 'base',
+
+					width: 500,
+					height: 100,
+
+					text: '我在第三页',
+
+					css: {
+						background: '#ccc',
+						top: 100
+					},
+					center: true
+				})
+
+		$("#iphone").fullpage({
+			sectionsColor: ['red', 'yellow', 'blue'],
+			afterLoad: function(anchor, index){
+				$('#iphone').find('.page').eq(index - 1).trigger('onload');
+			},
+			onLeave: function(index, next, direct){
+				$('#iphone').find('.page').eq(index - 1).trigger('onleave');
+			}
+		});	
+
+		$('#page-1').trigger('onload');
+
+		//var com = new H5ComponentBase('fuck', cfg);
+
+		//$('body').append(com);
+
+		// var flag = false;
+		// $(document).click(function(){
+		// 	flag = !flag;
+		// 	com.trigger( flag ? 'onload' : 'onleave');
+		// });
+
+	</script>
+</body>
+</html>

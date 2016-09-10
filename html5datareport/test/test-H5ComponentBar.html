@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<title>Document</title>
+	<style>
+		body{
+			padding: 0;
+			margin: 0;
+			background: #000;
+			font-size: 12px;
+		}
+		.iphone{
+			width: 340px;
+			height: 540px;
+			background: #fff;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -170px;
+			margin-top: -270px;
+		}
+	</style>
+	<script type="text/javascript" src="../js/lib/jquery.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery-ui.min.js"></script>
+	
+	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+	<link rel="stylesheet" href="../css/H5ComponentBase.css">
+
+	<script type="text/javascript" src="../js/H5ComponentBar.js"></script>
+	<link rel="stylesheet" href="../css/H5ComponentBar.css">
+</head>
+<body>
+	<div class="iphone"></div>
+	<script type="text/javascript">
+
+		var cfg = {
+
+			type: 'bar',
+
+			width: 530,
+			height: 600,
+
+			data: [
+				['javascript', 0.4, '#ff7676'],
+				['html', 0.3],
+				['css', 0.25],
+				['jq', 0.2],
+				['bootstrap', 0.15],
+				['angular', 0.1]
+			],
+
+			css: {
+				top: 100,
+				opacity: 0
+			},
+			animateIn: {
+				top:200,
+				opacity: 1
+			},
+			animateOut: {
+				top: 100,
+				opacity: 0
+			},
+
+			center: true
+
+		};
+
+		var com = new H5ComponentBar('fuck', cfg);
+
+		$('.iphone').append(com);
+
+		var flag = false;
+		$(document).click(function(){
+			flag = !flag;
+			com.trigger( flag ? 'onload' : 'onleave');
+		});
+
+	</script>
+</body>
+</html>

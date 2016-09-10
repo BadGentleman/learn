@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+	<title>Document</title>
+	<style>
+		body{
+			padding: 0;
+			margin: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../js/lib/jquery.js"></script>
+	<script type="text/javascript" src="../js/lib/jquery-ui.min.js"></script>
+	
+	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+	<link rel="stylesheet" href="../css/H5ComponentBase.css">
+</head>
+<body>
+	<script type="text/javascript">
+
+		var cfg = {
+
+			type: 'base',
+
+			width: 500,
+			height: 300,
+			
+			bg: '../imgs/people.png',
+
+			//text: 'the fucking world!!!',
+
+			css: {
+				textAlign: 'center',
+				bottom: 0,
+				opacity: 0
+			},
+			animateIn: {
+				bottom: 100,
+				opacity: 1
+			},
+			animateOut: {
+				bottom: 0,
+				opacity: 0
+			},
+
+			center: true
+
+		};
+
+		var com = new H5ComponentBase('fuck', cfg);
+
+		$('body').append(com);
+
+		var flag = false;
+		$(document).click(function(){
+			flag = !flag;
+			com.trigger( flag ? 'onload' : 'onleave');
+		});
+
+	</script>
+</body>
+</html>
