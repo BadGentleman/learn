@@ -1,48 +1,70 @@
-.h5_component_bar{
-	
+/* 垂直柱状组件样式 */
+.h5_component_bar_v{
+    
 }
 
-.h5_component_bar .v_line{
-	height: 100%;
-	width: 20px;
-	float: left;
-	margin-right: 30px;
-	position: relative;
-	text-align: center;
+.h5_component_bar_v .line{
+    height: 100%;
+    font-size: 12px;
+    float: left;
+    position: relative;
+    text-align: center;
 }
 
-.h5_component_bar .v_name{
-	height: 10%;
-	width: 50px;
-	float: none;
-	position: absolute;
-	bottom: -10%;
-	left: -10px; 
+.h5_component_bar_v .name{
+    width:100%;
+    height: 20px;
+    line-height:20px;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    color: #000;
 }
 
-.h5_component_bar .v_per{
-	height: 10%;
-	float: none;
-	position: absolute;
-	top: -10%;
-	left: 0px; 
-	opacity: 0;
-	transition: all 1s 1.5s;
+.h5_component_bar_v .rate{
+    height: 100%;
+    width: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -7.5px;
 }
 
-.h5_component_bar .v_bar{
-	height: 100%;
-	width: 100%;
-	float: none;
-	position: relative;
+.h5_component_bar_v .per{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: #99c0ff;
+    opacity: 0;
 }
 
-.h5_component_bar .v_proc{
-	height: 100%;
-	width: 100%;
-	float: left;
-	background: blue;
-	border-radius: 5px;
-	transition: all 1s 0.5s;
-	position: absolute;
+.h5_component_bar_v .rate .bg{
+    width: 100%;
+    height: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 3px;
+    background-color: #99c0ff;
+}
+
+.h5_component_bar_v_load .rate .bg{
+    transition: all 1s .5s;
+    height: 100%;
+}
+
+.h5_component_bar_v_leave .rate .bg{
+    height: 0%;
+}
+
+.h5_component_bar_v_load .per{
+    transition: all 1s 1.5s;
+    opacity: 1;
+}
+
+.h5_component_bar_v_leave .per{
+    opacity: 0;
 }

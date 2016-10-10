@@ -27,33 +27,32 @@
 
     <script type="text/javascript" src="../js/lib/jquery.js"></script>
     <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
-    <script type="text/javascript" src="../js/H5ComponentBar.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
 
 
-    <!-- 引入柱图-垂直的资源 -->
-    <script type="text/javascript" src="../js/H5ComponentBar_v.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBar_v.css">
+    <!-- 引入饼图的资源 -->
+    <script type="text/javascript" src="../js/H5ComponentPie.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentPie.css">
 
     <body>
-        <!-- 用于开发测试 H5ComponentBar_v 对象（垂直柱图组件） -->
+        <!-- 用于开发测试 H5ComponentPie 对象（饼图组件） -->
         <div class="iphone">
 
         </div>
 
         <script type="text/javascript">
-
             var cfg = {
-                type : 'bar_v',
+                type : 'pie',
                 
-                width : 530,
+                width : 400,
                 height : 400,
                 data:[
-                    ['Js' , .4  ,'#ff7676'],
-                    ['CSS3' , .1 ],
-                    ['HTML5' , .2  ],
-                    ['PHP' , .05  ],
-                    ['jQuery' , .35 ]
+                    ['Js' , .7  ,'#ff7676'],
+                    ['CSS3' , .01 ],
+                    ['HTML5' , .01  ],
+                    ['PHP' , .13  ],
+                    ['sss', .02 ],
+                    ['jQuery' , .13 ]
                 ],
                 css : {
                     top:100,
@@ -70,7 +69,7 @@
                 center : true,
             }
 
-            var h5 = new H5ComponentBar_v( 'myComponent', cfg );
+            var h5 = new H5ComponentPie( 'myComponent', cfg );
             $('.iphone').append(h5);
 
 
@@ -80,8 +79,9 @@
                 $('.h5_component').trigger( leave ? 'onLeave' : 'onLoad' )
             });
 
+
         </script>
 
     </body>
 
-</html>
+</html>>

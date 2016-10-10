@@ -27,16 +27,17 @@
 
     <script type="text/javascript" src="../js/lib/jquery.js"></script>
     <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
-    <script type="text/javascript" src="../js/H5ComponentBar.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
 
+    <script type="text/javascript" src="../js/H5ComponentPie.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentPie.css">
 
-    <!-- 引入柱图-垂直的资源 -->
-    <script type="text/javascript" src="../js/H5ComponentBar_v.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBar_v.css">
+    <!-- 引入环图的资源 -->
+    <script type="text/javascript" src="../js/H5ComponentRing.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentRing.css">
 
     <body>
-        <!-- 用于开发测试 H5ComponentBar_v 对象（垂直柱图组件） -->
+        <!-- 用于开发测试 H5ComponentRing 对象（环图组件） -->
         <div class="iphone">
 
         </div>
@@ -44,16 +45,13 @@
         <script type="text/javascript">
 
             var cfg = {
-                type : 'bar_v',
+                type : 'ring',
                 
-                width : 530,
+                width : 400,
                 height : 400,
+
                 data:[
-                    ['Js' , .4  ,'#ff7676'],
-                    ['CSS3' , .1 ],
-                    ['HTML5' , .2  ],
-                    ['PHP' , .05  ],
-                    ['jQuery' , .35 ]
+                    ['Js' , .1  ,'#ff7676'],
                 ],
                 css : {
                     top:100,
@@ -70,7 +68,7 @@
                 center : true,
             }
 
-            var h5 = new H5ComponentBar_v( 'myComponent', cfg );
+            var h5 = new H5ComponentRing( 'myBarComponent', cfg );
             $('.iphone').append(h5);
 
 

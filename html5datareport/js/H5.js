@@ -1,41 +1,91 @@
-/*内容组织*/
-var H5 = function(container){
+/* 内容管理对象 */
+var H5 = function(){
+    this.id = ('h5_' + Math.random()).replace('.', '_');
+    this.el = $('<div class="h5" id="'+ this.id +'">').hide();//容器元素
+    this.pages = [];
+    $('body').append(this.el);
+    
+    this.addPage = function(name, text){
+        var page = $('<div class="h5_page section">');
+        
+        if(name !== undefined){
+            page.addClass('h5_page_' + name);
+        }
+        
+        if(text !== undefined){
+            page.text(text);
+        }
+        
+        this.el.append(page);
+        this.pages.push(page);
+        
+        if(typeof this.whenAddPage === 'function'){
+            this.whenAddPage();    
+        }
+        
+        return this;
+    }
+    
+    this.addComponent = function(name, cfg){
+        var cfg = cfg || {};
+        cfg = $.extend({
+            type: 'base'
+        }, cfg);
+        
+        var component = null;
+        var page = this.pages.slice(-1)[0];
+        
+        switch(cfg.type){
+            case 'base': 
+                component = new H5ComponentBase(name, cfg);
+                break;
+            case 'polyline': 
+                component = new H5ComponentPolyline(name, cfg);
+                break;
+            case 'bar': 
+                component = new H5ComponentBar(name, cfg);
+                break;
+            case 'bar_v': 
+                component = new H5ComponentBar_v(name, cfg);
+                break;
+            case 'point': 
+                component = new H5ComponentPoint(name, cfg);
+                break;
+            case 'radar': 
+                component = new H5ComponentRadar(name, cfg);
+                break;
+            case 'pie': 
+                component = new H5ComponentPie(name, cfg);
+                break;
+            case 'ring': 
+                component = new H5ComponentRing(name, cfg);
+                break;
+            default:break;
+        }
+        
+        page.append(component);    
+        
+        return this;
+    }   
+    
+    this.loader = function(page){
+        this.loader = 
+        this.el.fullpage({
+            onLeave: function(index, nextIndex, direction){
+                $(this).find('.h5_component').trigger('onLeave');
+            },
+            afterLoad: function(anchorLink, index){
+                $(this).find('.h5_component').trigger('onLoad');
+            }
+        });
 
-	this.container = container || $('body');
-
-	this.pages = [];
-
-	this.addPage = function(){
-		var page = $('<div class="section page" id="page-' + (this.pages.length + 1) + '">');
-		this.container.append(page);
-		this.pages.push(page);
-
-		page.on('onload', function(){
-			$(this).find('.h5_component').trigger('onload');
-		});
-
-		page.on('onleave', function(){
-			$(this).find('.h5_component').trigger('onleave');
-		});
-
-		return this;
-	};
-
-	this.addComponent = function(name, cfg){
-
-		var page = this.pages[this.pages.length - 1];
-
-		var com = null;
-
-		switch(cfg.type){
-			case 'base': 
-				com = new H5ComponentBase(name, cfg);
-				break;
-			default: /*------*/ break;
-		}
-
-		page.append(com);
-
-		return this;
-	};
-};
+        this.el.show();
+        if(page){
+            $.fn.fullpage.moveTo(page);
+        }else{
+            this.pages[0].find('.h5_component').trigger('onLoad');
+        }
+    }
+    
+    this.loader = (typeof H5_loading === 'function') ? H5_loading : this.loader;
+}

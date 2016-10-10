@@ -1,63 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-	<title>Document</title>
-	<style>
-		body{
-			padding: 0;
-			margin: 0;
-		}
-	</style>
-	<script type="text/javascript" src="../js/lib/jquery.js"></script>
-	<script type="text/javascript" src="../js/lib/jquery-ui.min.js"></script>
-	
-	<script type="text/javascript" src="../js/H5ComponentBase.js"></script>
-	<link rel="stylesheet" href="../css/H5ComponentBase.css">
-</head>
-<body>
-	<script type="text/javascript">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 
-		var cfg = {
+    <title>慕课网2015课程学习情况</title>
 
-			type: 'base',
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-size: 12px;
+        }
 
-			width: 500,
-			height: 300,
-			
-			bg: '../imgs/people.png',
+        .iphone{
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -170px;
+        }
+    </style>
 
-			//text: 'the fucking world!!!',
+    <script type="text/javascript" src="../js/lib/jquery.js"></script>
+    <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
 
-			css: {
-				textAlign: 'center',
-				bottom: 0,
-				opacity: 0
-			},
-			animateIn: {
-				bottom: 100,
-				opacity: 1
-			},
-			animateOut: {
-				bottom: 0,
-				opacity: 0
-			},
+    <body>
+        <!-- 用于开发测试 H5ComponentBase 对象（基本的图文组件） -->
+        <div class="iphone">
+            
+        </div>
 
-			center: true
+        <script type="text/javascript">
+            var cfg = {
+                type: 'base',
+                
+                width: 514,
+                height: 306,
+                
+                bg: 'p1_people.png',
+                css: {
+                    bottom: 0,
+                    opacity: 0
+                },
+                animateIn: {
+                    bottom: 80,
+                    opacity: 1
+                },
+                animateOut: {
+                    bottom: 0,
+                    opacity: 0
+                },
+                center: true
+            };
+            
+            var h5 = new H5ComponentBase('myComponent', cfg);
+            
+            $('.iphone').append(h5);
+            
+            var leave = true;
+            $('body').click(function(){
+                leave = !leave;
+                $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad');
+            });
+        </script>
 
-		};
+    </body>
 
-		var com = new H5ComponentBase('fuck', cfg);
-
-		$('body').append(com);
-
-		var flag = false;
-		$(document).click(function(){
-			flag = !flag;
-			com.trigger( flag ? 'onload' : 'onleave');
-		});
-
-	</script>
-</body>
 </html>
